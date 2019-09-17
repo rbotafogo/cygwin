@@ -1,0 +1,207 @@
+# XWin Server Resource File - EXAMPLE
+# Earle F. Philhower, III
+
+# Place in ~/.XWinrc or in /etc/X11/system.XWinrc
+
+# Keywords are case insensitive, comments legal pretty much anywhere
+# you can have an end-of-line
+
+# Comments begin with "#" or "//" and go to the end-of-line
+
+# Paths to commands are **cygwin** based (i.e. /usr/local/bin/xcalc)
+
+# Paths to icons are **WINDOWS** based (i.e. c:\windows\icons)
+
+# Menus are defined as...
+# MENU <name> {
+#	<Menu Text>	EXEC	<command>
+#                               ^^ This command will have any "%display%"
+#                                  string replaced with the proper display
+#                                  variable (i.e. 127.0.0.1:<display>.0)
+#                                  (This should only rarely be needed as
+#                                  the DISPLAY environment variable is also
+#                                  set correctly)
+#  or	<Menu Text>	MENU	<name-of-some-prior-defined-menu>
+#  or	<Menu Text>	ALWAYSONTOP
+#                         ^^ Sets the window to display above all others
+#  or   <Menu Text>	RELOAD
+#                         ^^ Causes ~/.XWinrc or the system.XWinrc file
+#                            to be reloaded and icons and menus regenerated
+#  or	SEPARATOR
+#       ...
+# }
+
+# Set the taskmar menu with
+# ROOTMENU <name-of-some-prior-defined-menu>
+
+# If you want a menu to be applied to all popup window's system menu
+# DEFAULTSYSMENU <name-of-some-prior-defined-menu> <atstart|atend>
+
+# To choose a specific menu for a specific WM_CLASS or WM_NAME use ...
+# SYSMENU {
+#	<class-or-name-of-window> <name-of-prior-defined-menu> <atstart|atend>
+#	...
+# }
+
+# When specifying an ICONFILE in the following commands several different
+# formats are allowed:
+# 1. Name of a regular Windows .ico format file
+#    (ex:  "cygwin.ico", "apple.ico")
+# 2. Name and index into a Windows .DLL
+#    (ex: "c:\windows\system32\shell32.dll,4" gives the default folder icon
+#         "c:\windows\system32\shell32.dll,5" gives the floppy drive icon)
+# 3. Index into XWin.EXE internal ICON resource
+#    (ex: ",101" is the 1st icon inside XWin.exe)
+
+# To define where ICO files live (** Windows path**)
+# ICONDIRECTORY	<windows-path i.e. c:\cygwin\usr\icons>
+# NOTE: If you specify a fully qualified path to an ICON below
+#             (i.e. "c:\xxx" or "d:\xxxx")
+#       this ICONDIRECTORY will not be prepended
+
+# To change the taskbar icon use...
+# TRAYICON       <name-of-windows-ico-file-in-icondirectory>
+
+# To define a replacement for the standard X icon for apps w/o specified icons
+# DEFAULTICON	<name-of-windows-ico-file-in-icondirectory>
+
+# To define substitute icons on a per-window basis use...
+# ICONS {
+#	<class-or-name-of-window> <icon-file-name.ico>
+#	...
+# }
+# In the case where multiple matches occur, the first listed in the ICONS
+# section will be chosen.
+
+# To disable exit confirmation dialog add the line containing SilentExit
+
+# DEBUG <string> prints out the string to the XWin.log file
+
+// Below are just some silly menus to demonstrate writing your
+// own configuration file.
+
+// Make some menus...
+
+menu desenv {
+     "Emacs"	exec	"emacs"
+     "Notepad++" exec	"Notepad++Portable"
+     "SQLWorkbench" exec	"SQLWorkbench"
+}
+
+menu educacao {
+     "Artha (Thesaurus)"	exec	"ArthaPortable"
+     "GoldenDict"  exec	"GoldenDictPortable"
+     "kturtle" exec	"kturtle"
+     "R"       exec	"R-Portable"
+}
+
+menu graficos {
+     "Gimp"   exec	"GIMPPortable"
+}
+
+menu internet {
+     "Chrome" exec	"GoogleChromePortable"
+     "Firefox"	exec	"FirefoxPortable"
+     "FileZilla"  exec	"FileZillaPortable"
+     "Skype"	exec	"SkypePortable"
+}
+
+menu util {
+     "7-Zip"	exec	"7zFM"
+     "CrystalDisk"	exec	"CrystalDiskInfoPortable"
+     "CubicExplorer" exec	"CubicExplorerPortable"
+     "Disk Cleaner"  exec	"DiskCleanerPortable"
+     "Dolphin"	exec	"dolphin"
+     "Filelight" exec	"fileligth"
+     "FreeFileSync"	exec	"FreeFileSyncPortable"
+     "Scanner"		exec	"Scanner"
+     "SIW"	  exec	"SIWPortable"
+     "TeamViewer" exec	"TeamViewerPortable"
+     "VirtuaWin"  exec	"VirtuaWinPortable"
+     "xterm"	  exec	"xterm"
+}
+
+menu escritorio {
+     "BizAgi"	exec	"BizAgiProcessModeler"
+     "CalendarSync"	exec "CalendarSync"
+     "FreeMind"	exec	"freemind"
+     "FoxitReader" exec	"FoxitReaderPortable"
+     "kmymoney"	exec	"kmymoney"
+     "GnuCash"	exec	"GnuCashPortable"
+     "Gnumeric"	exec	"GnumericPortable"
+     "MikTex"	exec	"miktx"
+     "OpenOffice" exec	"OpenOfficePortable"
+     "OpenOffice Base" exec	"OpenOfficeBasePortable"
+     "OpenOffice Calc" exec	"OpenOfficeCalcPortable"
+     "OpenOffice Draw" exec	"OpenOfficeDrawPortable"
+     "OpenOffice Impress" exec	"OpenOfficeImpressPortable"
+     "OpenOffice Math"	  exec	"OpenOfficeMathPortable"
+     "OpenOffice Writer"  exec	"OpenOfficeWriterPortable"
+}
+
+menu seguranca {
+     "EraserDrop" exec	"EraserDropPortable"
+     "Eraser"	  exec	"EraserPortable"
+     "KeePass" exec	"KeePassPortable"
+     "TrueCrypt" exec	"TrueCrypt"
+}
+
+menu multimidia {
+     "CamStrudio"	exec "CamStudioPortable"
+     "Camtasia Estudio"	exec "Camtasia Estudio"
+}
+     
+menu root {
+	"Desenvolvimento" menu	desenv
+	"Educacao"	  menu	educacao
+	"Escritorio"	  menu	escritorio
+	"Graficos"	  menu 	graficos
+	"Internet"	  menu	internet
+	"Multimidia"	  menu	multimidia
+#	"Outros"	  menu	outros
+	"Seguranca"	  menu	seguranca
+	"Utilitarios"	  menu	util
+// Comments fit here, too...
+
+	SEPARATOR
+	FAQ            EXEC "cygstart http://x.cygwin.com/docs/faq/cygwin-x-faq.html"
+	"User's Guide" EXEC "cygstart http://x.cygwin.com/docs/ug/cygwin-x-ug.html"
+	SEPARATOR
+	"View logfile" EXEC "xterm -e less +F $XWINLOGFILE"
+	SEPARATOR
+
+	"Reload .XWinrc"	RELOAD
+	SEParATOR
+}
+
+menu aot {
+	Separator
+	"Always on Top"	alwaysontop
+}
+
+menu xtermspecial {
+	"Emacs"		exec	"emacs"
+	"Always on Top"	alwaysontop
+	SepArAtor
+}
+
+RootMenu root
+
+DefaultSysMenu aot atend
+
+SysMenu {
+	"xterm"	xtermspecial atstart
+}
+
+IconDirectory	"c:\Windows\"
+
+# DefaultIcon	"br.ico"
+
+Icons {
+	"xterm"	"xterm.ico"
+}
+
+SilentExit
+
+DEBUG "Done parsing the configuration file..."
+
