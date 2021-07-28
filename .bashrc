@@ -189,10 +189,6 @@ alias l='ls -CF'                              #
 # 
 # alias cd=cd_func
 
-#proxy=http://zxb3:qUe3j1ai@lbproxy.br-petrobras.com.br:8080
-#export http_proxy=$proxy
-#export HTTP_PROXY=$proxy
-
 if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
